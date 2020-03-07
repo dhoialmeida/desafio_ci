@@ -1,0 +1,9 @@
+steps:
+- id: "Rodando testes"
+  name: "gcr.io/cloud-builders/go"
+  args: ["test"]
+
+- id: "Gerando imagem e salvando no container registry"
+  name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "grc.io/desafio-ci-270414/desafio_ci", "."]
+  images: ["grc.io/desafio-ci-270414/desafio_ci"]
