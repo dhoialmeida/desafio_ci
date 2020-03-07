@@ -1,0 +1,12 @@
+steps:
+- id: "Rodando testes"
+  name: "gcr.io/cloud-builders/go"
+  args: ["test"]
+  dir: "./src/"
+  env: ["PROJECT_ROOT=main", "GOPATH=./src/"]
+
+- id: "Gerando imagem e salvando no container registry"
+  name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "gcr.io/$PROJECT_ID/desafio_ci", "."]
+
+images: ["gcr.io/$PROJECT_ID/desafio_ci"]
